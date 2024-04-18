@@ -13,11 +13,13 @@ async function saveUser() {
   }
 }
 const insertSampleData = async () => {
-  console.time("Inserting test records");
+  console.log("Inserting test records");
 
   for (let i = 0; i < 100; i++) {
     const query = `INSERT INTO test (name) VALUES (?)`;
-    const values = ["Sample Data B - " + i];
+    const testnum = i.toString().padStart(4, "0");
+
+    const values = ["Sample Data B - " + testnum];
 
     try {
       await db.execute(query, values);
@@ -26,7 +28,7 @@ const insertSampleData = async () => {
     }
   }
 
-  console.timeEnd("Inserting 100 records");
+  console.log("Inserting 100 records");
 };
 
 insertSampleData();
