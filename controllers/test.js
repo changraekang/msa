@@ -5,8 +5,10 @@ const getTest = async (req, res) => {
 
   try {
     const [data] = await db.query(q);
+    console.log(data, "test failed");
     res.status(200).json(data);
   } catch (err) {
+    console.log(err, "test failed");
     res.status(500).send(err);
   }
 };
