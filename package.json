@@ -1,18 +1,19 @@
 {
-    "name": "msa-server",
-    "version": "1.0.0",
-    "description": "Node MSA Server Test",
-    "main": "app.js",
-    "scripts": {
+  "name": "msa-server",
+  "version": "1.0.0",
+  "description": "Node MSA Server Test",
+  "main": "app.js",
+  "scripts": {
       "start": "node app.js"
-    },
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+      "body-parser": "^1.20.2",
+      "cors": "^2.8.5",
       "dotenv": "^16.3.1",
       "express": "^4.16.4",
       "mysql2": "^3.9.3",
-      "cors": "^2.8.5"
-
-    }
+      "redis": "^4.6.13"
   }
+}
