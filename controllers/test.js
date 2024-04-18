@@ -1,8 +1,6 @@
 const db = require("../db.js");
 const { createClient } = require("redis");
 
-const app = express();
-
 let client; // 전역 변수로 설정
 
 async function run() {
