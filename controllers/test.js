@@ -2,6 +2,8 @@ const db = require("../db.js");
 
 const getTest = async (req, res) => {
   const q = "SELECT * FROM test";
+  console.log(req, "getTest req");
+  console.log(res, "getTest res");
 
   try {
     const [data] = await db.query(q);
