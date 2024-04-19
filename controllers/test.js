@@ -20,9 +20,11 @@ run();
 
 const getTest = async (req, res) => {
   const q = "SELECT * FROM test";
-
+  const startTime = Date.now(); // 요청 처리 시작 시간
   try {
     const [data] = await db.query(q);
+    const elapsed = Date.now() - startTime; // 경과 시간 계산
+    console.log("Using Database data, Response Time:", elapsed + "ms");
     res.status(200).json(data);
   } catch (err) {
     res.status(500).send(err);
@@ -33,9 +35,12 @@ const getTestRedis = async (req, res) => {
   const redisKey = "db:test"; // Redis에서 사용할 키
   try {
     // 먼저 Redis에서 데이터를 조회합니다.
+    const startTime = Date.now(); // 요청 처리 시작 시간
+
     const cachedData = await client.get(redisKey);
     if (cachedData) {
-      console.log("Using cached data");
+      const elapsed = Date.now() - startTime; // 경과 시간 계산
+      console.log("Using cached data, Response Time:", elapsed + "ms");
       return res.status(200).json(JSON.parse(cachedData));
     }
     // 캐시된 데이터가 없을 경우, DB에서 데이터를 조회합니다.
